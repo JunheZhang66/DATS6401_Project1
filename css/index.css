@@ -1,0 +1,79 @@
+h1,
+h2,
+h3,
+h4 {
+    text-align: center;
+}
+
+h2 {
+    margin: 30px;
+}
+
+#section0 {
+    padding: 20px;
+}
+
+#side-navbar {
+    position: fixed;
+    top: 150px;
+    left: 20px;
+}
+
+#side-navbar a {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#section-Geo .card {
+    position: relative;
+    bottom: 400px;
+    left: 750px;
+}
+
+#section-Geo h3 {
+    margin: 20px;
+}
+
+#section1 {
+    margin-top: 20px;
+}
+
+#section2 {
+    margin-top: 20px;
+}
+
+.col-sm .card {
+    margin-left: 70px;
+    margin-top: 30px;
+}
+
+#section2 .card {
+    position: relative;
+    bottom: 100px;
+    margin: auto;
+}
+
+.growing-rate .card {
+    margin: auto;
+    position: relative;
+    bottom: 600px;
+    left: 550px;
+}
+
+#section-footer {
+    background-color: darkcyan;
+    padding: 40px;
+    text-align: center;
+}
+
+#section-footer h4 {
+    color: wheat;
+}
+
+#section-footer a {
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+    margin: 20px;
+}

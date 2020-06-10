@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <title>DATS6401-P1</title>
+</head>
+
+<body>
+    <!-- Image and text -->
+    <nav id='section0' class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+            <img src="img/favicon-32x32.png" alt=""> DATS6401-Project1 By Junhe Zhang
+        </a>
+    </nav>
+    <div id='side-navbar' class="card border-info mb-3" style="max-width: 12rem;">
+        <div class="card-header">Visualization:</div>
+        <div class="card-body text-info">
+            <a href="#section-Geo">Data Map</a>
+            <a href="#section-Line">Data Line</a>
+            <a href="#section1">Total GDP</a>
+            <a href="#section2">Per Capita GDP</a>
+            <a href="#section3">Growing</a>
+            <a href="#section0">Go Top</a>
+        </div>
+    </div>
+    <div>
+        <div id='section-Geo' class="container">
+            <h3>G20 Countries Data Visualization On Map</h4>
+                <div class="row">
+                    <div class="col-sm">
+                        <div id="regions_div" style="width: 900px; height: 500px;"></div>
+                        <div class="col-sm">
+                            <div class="card border-info mb-3" style="max-width: 21rem;">
+                                <div class="card-header bg-transparent border-info">Geo Map Control Menu</div>
+                                <div class="card-body text-info">
+                                    <h5>Select Year:</h5>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Year-2011
+                            </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" type="button" value="2011">2011</a>
+                                            <a class="dropdown-item" type="button" value="2012">2012</a>
+                                            <a class="dropdown-item" type="button" value="2013">2013</a>
+                                            <a class="dropdown-item" type="button" value="2014">2014</a>
+                                            <a class="dropdown-item" type="button" value="2015">2015</a>
+                                        </div>
+                                    </div>
+                                    <h5>Sort By:</h5>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-info btn-secondary active">
+                                            <input type="radio" name="options" id="option1" autocomplete="off" checked value='GDP' onchange="handelGeoChartType(this)"> GDP
+                                        </label>
+                                        <label class="btn btn-info btn-secondary">
+                                            <input type="radio" name="options" id="option2" autocomplete="off" checked value='Military' onchange="handelGeoChartType(this)"> Military
+                                        </label>
+                                        <label class="btn btn-info btn-secondary">
+                                            <input type="radio" name="options" id="option3" autocomplete="off" checked value='Health' onchange="handelGeoChartType(this)"> Health
+                                        </label>
+                                        <label class="btn btn-info btn-secondary">
+                                            <input type="radio" name="options" id="option4" autocomplete="off" checked value='Education' onchange="handelGeoChartType(this)"> Education
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-transparent border-success"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div id='section-Line'>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h2>G20 Countries GDP, Military, Education and Health Increasing line Chart</h3>
+                            <div id='line-chart'></div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="card border-info mb-3" style="max-width: 24rem;">
+                            <div class="card-header">Spending Type:</div>
+                            <div class="card-body text-info">
+                                <div class="grow-heal-education-checkbox btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-info btn-secondary active">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked value='GDP' onchange="handleLineChartType(this)"> GDP
+                                      </label>
+                                    <label class="btn btn-info btn-secondary">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked value='Health' onchange="handleLineChartType(this)"> Health
+                                      </label>
+                                    <label class="btn btn-info btn-secondary">
+                                      <input type="radio" name="options" id="option2" autocomplete="off" checked value='Education' onchange="handleLineChartType(this)"> Education
+                                    </label>
+                                    <label class="btn btn-info btn-secondary">
+                                        <input type="radio" name="options" id="option3" autocomplete="off" checked value='Military' onchange="handleLineChartType(this)"> Military
+                                      </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id='section1'>
+            <h2>Comparison between Education, Health and Military Spending in Total GDP</h1>
+                <div id='bar-charts'>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <h3>Military Spending Analysis for Top 10 G20 Countries</h3>
+                                <div id='bar-chart1' style='width: 500px; height: 500px;'></div>
+                            </div>
+                            <div class="col-sm">
+                                <h3>Health Spending Analysis for Top 10 G20 Countries</h3>
+                                <div id='bar-chart2' style='width: 500px; height: 500px;'></div>
+                            </div>
+                            <div class="col-sm">
+                                <h3>Education Spending Analysis for Top 10 G20 Countries</h3>
+                                <div id='bar-chart3' style='width: 500px; height: 500px;'></div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="card border-info mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Control Menu</div>
+                                    <div class="card-body text-info">
+                                        <!-- <h5 class="card-title">Info card title</h5> -->
+                                        <div class="checkbox-control-menu">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch1" value='USA' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch1">USA</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch2" value='China' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch2">China</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch3" value='India' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch3">India</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch4" value='Germany' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch4">Germany</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch5" value='UK' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch5">UK</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch6" value='Japan' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch6">Japan</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch7" value='France' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch7">France</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch8" value='Saudi Arabia' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch8">Saudi Arabia</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch9" value='Russia' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch9">Russia</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch10" value='South Korea' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch10">South Korea</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch11" value='Brazil' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch11">Brazil</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input " id="customSwitch12" value='Australia' onclick='handleCheckBox(this)' checked=checked>
+                                                <label class="custom-control-label" for="customSwitch12">Australia</label>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-info active">
+                                      <input type="radio" name="options" id="option4" autocomplete="off" checked value='0' onchange="switchBarChartHandler(this)"> Percentage
+                                    </label>
+                                            <label class="btn btn-info">
+                                      <input type="radio" name="options" id="option5" autocomplete="off" checked value='1' onchange="switchBarChartHandler(this)"> Static
+                                    </label>
+                                        </div>
+                                        <input class='reset-button btn btn-info' type="button" value="reset" onclick='handleResetCheckBox(this)'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <h3>Military Spending Analysis for Top 10 G20 Countries</h3>
+            <div id='bar-chart1' style='width: 500px; height: 500px;'></div>
+            <h3>Health Spending Analysis for Top 10 G20 Countries</h3>
+            <div id='bar-chart2' style='width: 500px; height: 500px;'></div>
+            <h3>Education Spending Analysis for Top 10 G20 Countries</h3>
+            <div id='bar-chart3' style='width: 500px; height: 500px;'></div> -->
+
+        </div>
+        <div id='section2'>
+            <h2>Comparison between Education, Health and Military Spending in Per Capita GDP</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h3>Spending Compare in Total GDP</h3>
+                            <div id='bar-chart-compare' style='width: 500px; height: 500px;'></div>
+                        </div>
+                        <div class="col-sm">
+                            <h3>Spending Compare in Per Capita GDP</h3>
+                            <div id='bar-chart-shared-compare' style='width: 500px; height: 500px;'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-info mb-3" style="max-width: 24rem;">
+                    <div class="card-header bg-transparent border-info">Spending Compare Control Menu</div>
+                    <div class="card-body text-info">
+                        <h5>Select Year:</h5>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Year-2011
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" type="button" value="2011">2011</a>
+                                <a class="dropdown-item" type="button" value="2012">2012</a>
+                                <a class="dropdown-item" type="button" value="2013">2013</a>
+                                <a class="dropdown-item" type="button" value="2014">2014</a>
+                                <a class="dropdown-item" type="button" value="2015">2015</a>
+                            </div>
+                        </div>
+                        <h5>Data By:</h5>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-secondary btn-info active">
+                                <input type="radio" name="options" id="option4" autocomplete="off" checked value='0' onchange="switchCompareBarChartHandler(this)"> Percentage
+                            </label>
+                            <label class="btn btn-info btn-secondary">
+                                <input type="radio" name="options" id="option5" autocomplete="off" checked value='1' onchange="switchCompareBarChartHandler(this)"> Static
+                            </label>
+                        </div>
+                        <h5>Sort By:</h5>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-info btn-secondary active">
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked value='1' onchange="sortCompareBarChartHandler(this)"> Military
+                            </label>
+                            <label class="btn btn-info btn-secondary">
+                            <input type="radio" name="options" id="option2" autocomplete="off" checked value='2' onchange="sortCompareBarChartHandler(this)"> Health
+                            </label>
+                            <label class="btn btn-info btn-secondary">
+                            <input type="radio" name="options" id="option3" autocomplete="off" checked value='3' onchange="sortCompareBarChartHandler(this)"> Education
+                            </label>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div id='section3' class="growing-rate">
+            <h3>Growing rate in U.S $ From 2011 to 2015</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div id='bar-chart-grow-compare1'></div>
+                    </div>
+                    <div class="col-sm">
+                        <div id='bar-chart-grow-compare2'></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-info mb-3" style="max-width: 15rem;">
+                <div class="card-header">Growing Rate By:</div>
+                <div class="card-body text-info">
+                    <div class="grow-heal-education-checkbox btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-info btn-secondary active">
+                            <input type="radio" name="options" id="option2" autocomplete="off" checked value='1' onchange="switchGrowingRateBarChartHandler(this)"> Health
+                          </label>
+                        <label class="btn btn-info btn-secondary">
+                          <input type="radio" name="options" id="option1" autocomplete="off" checked value='0' onchange="switchGrowingRateBarChartHandler(this)"> Education
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='section-footer'>
+            <h4>Data Source</h4>
+            <a href="https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS?end=2017&locations=US&start=2011&view=chart" target="_blank">World Bank</a>
+            <a href="https://docs.google.com/spreadsheets/d/1pnlrBD7zk0FPq3-ohs1SATcPJB0O4yw2GPiCpKeKiJE/edit#gid=0" target="_blank">Geo Data</a>
+            <a href="https://docs.google.com/spreadsheets/d/19EaMgLOZU12dImjIAFTpdnyIWGeXw_lHFJne-AXmHBY/edit?usp=sharing" target="_blank">Line Data</a>
+            <a href="https://docs.google.com/spreadsheets/d/1ySGQItcaygIkpFGaCAB-K4mdaopyRgDRkqb5F6jgCd4/edit?usp=sharing" target="_blank">Bar Chart Data</a>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="javascript/index.js"></script>
+</body>
+
+</html>
